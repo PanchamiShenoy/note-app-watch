@@ -12,7 +12,6 @@ struct ContentView: View {
     @State private var notes = [Note]()
     @State private var text: String = ""
     @Environment(\.managedObjectContext) private var viewContext
-
    
     func save() {
         let note = Note(context: viewContext)
@@ -31,8 +30,8 @@ struct ContentView: View {
     func load() {
         DispatchQueue.main.async {
                   do {
+                      notes = []
                       notes = try viewContext.fetch(Note.fetchRequest())
-                    print(notes)
                   } catch {
                     print("Unable to Fetch Workouts, (\(error))")
                   }
@@ -60,7 +59,7 @@ struct ContentView: View {
         NavigationStack {
             VStack {
                 HStack(alignment: .center, spacing: 5) {
-                    TextField("Add new Note", text: $text)
+                    TextField("New Note", text: $text)
                     
                     Button {
                         guard text.isEmpty == false else {
@@ -85,7 +84,9 @@ struct ContentView: View {
                 if notes.count >= 1 {
                     List {
                       ForEach(0..<notes.count, id: \.self) { i in
-                        NavigationLink(destination: DetailView(note: notes[i], count: notes.count, index: i)) {
+                          NavigationLink(destination: DetailView(note: notes[i], count: notes.count, index: i, onSave: {
+                              load()
+                          })) {
                           HStack {
                             Capsule()
                               .frame(width: 4)
@@ -95,7 +96,8 @@ struct ContentView: View {
                               .padding(.leading, 5)
                           }
                         }
-                      } 
+                        
+                      }
                       .onDelete(perform: delete)
                     }
                     .scrollIndicators(.hidden)

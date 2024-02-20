@@ -1,75 +1,74 @@
-//
-//  DetailView.swift
-//  NotesApp Watch App
-//
-//  Created by Panchami Shenoy on 6/12/23.
-//
-
 import SwiftUI
 
 struct DetailView: View {
-  // MARK: - PROPERTY
-  
-  let note: Note
-  let count: Int
-  let index: Int
-  
-  @State private var isCreditsPresented: Bool = false
-  @State private var isSettingsPresented: Bool = false
+    // MARK: - PROPERTIES
+    let note: Note
+    let count: Int
+    let index: Int
+    let onSave: () -> Void
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @State private var text: String 
 
-  // MARK: - BODY
-
-  var body: some View {
-    VStack(alignment: .center, spacing: 3) {
-      
-        VStack {
-          
-          HStack {
-            Capsule()
-              .frame(height: 1)
-            
-            Image(systemName: "note.text")
-            
-            Capsule()
-              .frame(height: 1)
-          }
-          .foregroundColor(.accentColor)
-        }
-      
-      Spacer()
-      
-      ScrollView(.vertical) {
-          Text(note.text ?? "" )
-          .font(.title3)
-          .fontWeight(.semibold)
-          .multilineTextAlignment(.center)
-      }
-      
-      Spacer()
-      
-      HStack(alignment: .center) {
-          Spacer()
-        Image(systemName: "gear")
-          .imageScale(.large)
-          .onTapGesture {
-            isSettingsPresented.toggle()
-          }
-          .sheet(isPresented: $isSettingsPresented, content: {
-              SettingsView()
-              
-          })
-        
-        Spacer()
-        
-        Text("\(count) / \(index + 1)")
-        
-        Spacer()
-        
-      }
-      .foregroundColor(.secondary)
+    // MARK: - INITIALIZER
+    init(note: Note, count: Int, index: Int, onSave: @escaping () -> Void) {
+        self.note = note
+        self.count = count
+        self.index = index
+        self.onSave = onSave
+        _text = State(initialValue: note.text ?? "")
     }
-    .padding(3)
-  }
+
+    // MARK: - BODY
+    var body: some View {
+        VStack(alignment: .center, spacing: 3) {
+            VStack {
+                HStack {
+                    Capsule()
+                        .frame(height: 1)
+                    Image(systemName: "note.text")
+                    Capsule()
+                        .frame(height: 1)
+                }
+                .foregroundColor(.accentColor)
+            }
+
+            Spacer()
+
+            ScrollView(.vertical) {
+                TextField("", text: $text)
+                    .font(.title3)
+                    .multilineTextAlignment(.center)
+
+                Button(action: {
+                    guard text.isEmpty == false else {
+                        return
+                    }
+                    save()
+                }) {
+                    Text("Save")
+                        .foregroundColor(.accentColor)
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                }
+            }
+        }
+        .padding(3)
+    }
+
+    // MARK: - METHODS
+
+    private func save() {
+        if let existingNote = try? viewContext.existingObject(with: note.objectID) as? Note {
+            existingNote.text = text
+
+            do {
+                try viewContext.save()
+                onSave()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
-
-

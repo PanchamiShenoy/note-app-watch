@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BD00E71C2A37A5AD00291E1B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD00E71B2A37A5AD00291E1B /* DetailView.swift */; };
-		BD00E71E2A37CD2600291E1B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD00E71D2A37CD2600291E1B /* SettingView.swift */; };
 		BD00E7232A38032600291E1B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD00E7222A38032600291E1B /* Persistence.swift */; };
 		BD00E78C2A38095E00291E1B /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD00E78A2A38095E00291E1B /* CoreDataModel.xcdatamodeld */; };
 		BD00E78F2A38098800291E1B /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD00E78D2A38098800291E1B /* Note+CoreDataClass.swift */; };
@@ -18,7 +17,6 @@
 		BD983EEE2A37744D000A0C9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD983EED2A37744D000A0C9E /* ContentView.swift */; };
 		BD983EF02A37744F000A0C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD983EEF2A37744F000A0C9E /* Assets.xcassets */; };
 		BD983EF32A37744F000A0C9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD983EF22A37744F000A0C9E /* Preview Assets.xcassets */; };
-		BD983EFE2A377628000A0C9E /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD983EFD2A377628000A0C9E /* Notes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		BD00E71B2A37A5AD00291E1B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		BD00E71D2A37CD2600291E1B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		BD00E7222A38032600291E1B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		BD00E78B2A38095E00291E1B /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		BD00E78D2A38098800291E1B /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -58,7 +55,6 @@
 		BD983EED2A37744D000A0C9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BD983EEF2A37744F000A0C9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD983EF22A37744F000A0C9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BD983EFD2A377628000A0C9E /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +114,6 @@
 			children = (
 				BD983EED2A37744D000A0C9E /* ContentView.swift */,
 				BD00E71B2A37A5AD00291E1B /* DetailView.swift */,
-				BD00E71D2A37CD2600291E1B /* SettingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -126,7 +121,6 @@
 		BD983F002A37763D000A0C9E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BD983EFD2A377628000A0C9E /* Notes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,13 +224,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD983EEE2A37744D000A0C9E /* ContentView.swift in Sources */,
-				BD00E71E2A37CD2600291E1B /* SettingView.swift in Sources */,
 				BD00E71C2A37A5AD00291E1B /* DetailView.swift in Sources */,
 				BD00E7232A38032600291E1B /* Persistence.swift in Sources */,
 				BD983EEC2A37744D000A0C9E /* NotesAppApp.swift in Sources */,
 				BD00E78F2A38098800291E1B /* Note+CoreDataClass.swift in Sources */,
 				BD00E78C2A38095E00291E1B /* CoreDataModel.xcdatamodeld in Sources */,
-				BD983EFE2A377628000A0C9E /* Notes.swift in Sources */,
 				BD00E7902A38098800291E1B /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
